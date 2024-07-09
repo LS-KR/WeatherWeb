@@ -23,7 +23,7 @@ export default class CityCard extends Vue {
 
 <template>
     <div class="city-card">
-        <h2 class="name" v-text="name" />
+        <a class="name" v-text="name" v-bind:href="'/city/' + name"/>
         <CityWeather v-for="v in weather" :key="v" :weather="v" />
     </div>
 </template>
@@ -39,8 +39,18 @@ export default class CityCard extends Vue {
     border: 1px solid $rosewater;
     border-radius: 16px;
 
-    h2 {
+    a {
         border-bottom: 1px solid $subtext1;
+        text-decoration: none;
+        color: $text;
+        font-size: x-large;
+        font-weight: 800;
+        width: 100%;
+        display: block;
+
+        &:active {
+            color: $text;
+        }
     }
 }
 </style>
