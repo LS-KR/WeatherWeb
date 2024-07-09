@@ -26,6 +26,8 @@ app.get('/list', (c) => {
   return c.json(cityList(), 200, header)
 })
 
+app.get('/search', (c) => c.json([], 200, header))
+
 app.get('/search/:id', (c) => {
   return c.json(searchCode(c.req.param('id')), 200, header)
 })
