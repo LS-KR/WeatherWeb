@@ -8,6 +8,8 @@
     "concurrently": "^8.2.2"
   },
   "scripts": {
-    "start": "concurrently \"cd web && yarn dev\" \"cd backend && yarn dev\""
+    "start": "concurrently \"cd web && yarn dev\" \"cd backend && yarn dev\"",
+    "backend": "cd backend && yarn dev",
+    "depend": "concurrently \"cd web && yarn install\" \"cd backend && yarn install\""
   }
 }
