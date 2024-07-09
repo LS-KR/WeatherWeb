@@ -1,0 +1,13 @@
+{
+  "name": "WeatherWeb",
+  "version": "1.0.0",
+  "author": "Elihuso Quigley",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "start": "concurrently \"cd web && yarn dev\" \"cd backend && yarn dev\""
+  }
+}
