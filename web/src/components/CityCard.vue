@@ -16,7 +16,7 @@ export default class CityCard extends Vue {
     created() {
         fetch(urlJoin(backendurl, 'weather', this.name))
             .then(it => it.json())
-            .then(it => this.weather = (it as WeatherData[]).slice(0, 5))
+            .then(it => this.weather = (it as WeatherData[]).slice(0, 6))
     }
 }
 </script>

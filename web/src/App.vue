@@ -5,6 +5,7 @@
     <div class="content">
         <CityCard v-for="v of cities" :key="v" :name="v" />
     </div>
+    <h1 class="no-content" v-if="!cities.length" >←Nothing→</h1>
 </template>
 
 <script lang="ts">
@@ -65,5 +66,13 @@ export default class App extends Vue {
     flex-wrap: wrap;
     gap: 20px;
     padding: 40px
+}
+
+.no-content {
+    text-align: center;
+    font-size: 80px;
+    color: $mauve;
+    opacity: 0.125;
+    user-select: none;
 }
 </style>
