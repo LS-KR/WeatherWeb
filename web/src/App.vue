@@ -4,11 +4,14 @@
 
 <script lang="ts">
 import {Component, Vue} from "vue-facing-decorator";
-import router from "@/router";
 
 @Component({})
 export default class App extends Vue {
-
+    mounted() {
+        onclose = () => {
+            localStorage.removeItem("city");
+        }
+    }
 }
 </script>
 

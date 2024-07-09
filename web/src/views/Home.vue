@@ -12,6 +12,21 @@ export default class Home extends Vue {
     model = ''
     cities = [] as string[]
 
+    created() {
+        if (localStorage.getItem("city")) {
+            this.model = localStorage.getItem("city");
+            localStorage.setItem('city', '');
+            fetch(urlJoin(backendurl, 'search', this.model))
+                .then(it => it.json())
+                .then(it => {
+                    this.cities = []
+                    for (const city of (it as Code[])) {
+                        this.cities.push(city.city)
+                    }
+                })
+        }
+    }
+
     search(e: KeyboardEvent) {
         if (e.key == 'Enter') {
             fetch(urlJoin(backendurl, 'search', this.model))

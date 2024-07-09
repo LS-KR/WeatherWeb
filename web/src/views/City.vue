@@ -17,6 +17,7 @@ export default class City extends Vue {
         fetch(urlJoin(backendurl, 'weather', this.cityId))
             .then(it => it.json())
             .then(it => this.weather = it as WeatherData[])
+        localStorage.setItem('city', this.cityId);
     }
 }
 </script>
