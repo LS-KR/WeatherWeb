@@ -2,6 +2,7 @@
 import CityCard from "@/components/CityCard.vue";
 import {backendurl} from "@/logic/config";
 import {Code} from "@/logic/data";
+import {shuffle} from "@/logic/helper";
 import urlJoin from "url-join";
 import {Component, Vue} from 'vue-facing-decorator';
 
@@ -16,6 +17,8 @@ export default class Home extends Vue {
         if (localStorage.getItem("city")) {
             this.model = localStorage.getItem("city");
             localStorage.setItem('city', '');
+        }
+        if (this.model != '') {
             fetch(urlJoin(backendurl, 'search', this.model))
                 .then(it => it.json())
                 .then(it => {
@@ -24,19 +27,25 @@ export default class Home extends Vue {
                         this.cities.push(city.city)
                     }
                 })
+        } else {
+            this.cities = shuffle(JSON.parse(localStorage.getItem('star')) as string[]) as string[]
         }
     }
 
     search(e: KeyboardEvent) {
         if (e.key == 'Enter') {
-            fetch(urlJoin(backendurl, 'search', this.model))
-                .then(it => it.json())
-                .then(it => {
-                    this.cities = []
-                    for (const city of (it as Code[])) {
-                        this.cities.push(city.city)
-                    }
-                })
+            if (this.model != '') {
+                fetch(urlJoin(backendurl, 'search', this.model))
+                    .then(it => it.json())
+                    .then(it => {
+                        this.cities = []
+                        for (const city of (it as Code[])) {
+                            this.cities.push(city.city)
+                        }
+                    })
+            } else {
+                this.cities = JSON.parse(localStorage.getItem('star')) as string[]
+            }
         }
     }
 }
