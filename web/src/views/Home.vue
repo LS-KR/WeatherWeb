@@ -3,7 +3,7 @@ import CityCard from "@/components/CityCard.vue";
 import {backendurl} from "@/logic/config";
 import {Code} from "@/logic/data";
 import urlJoin from "url-join";
-import {Vue, Component} from 'vue-facing-decorator';
+import {Component, Vue} from 'vue-facing-decorator';
 
 @Component({
     components: { CityCard }
@@ -47,9 +47,9 @@ export default class Home extends Vue {
         <v-text-field label="City" variant="outlined" v-model="model" @keydown="search"></v-text-field>
     </div>
     <div class="content">
-        <CityCard v-for="v of cities" :key="v" :name="v" />
+        <CityCard v-for="v of cities" :key="v" :name="v"/>
     </div>
-    <h1 class="no-content" v-if="!cities.length" >←Nothing→</h1>
+    <h1 class="no-content" v-if="!cities.length">←Nothing→</h1>
 </template>
 
 <style lang="scss">

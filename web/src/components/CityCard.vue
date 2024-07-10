@@ -3,13 +3,13 @@ import CityWeather from "@/components/CityWeather.vue";
 import {backendurl} from "@/logic/config";
 import {WeatherData} from "@/logic/data";
 import urlJoin from "url-join";
-import {Vue, Component, Prop} from 'vue-facing-decorator';
+import {Component, Prop, Vue} from 'vue-facing-decorator';
 
 @Component({
     components: { CityWeather }
 })
 export default class CityCard extends Vue {
-    @Prop({required: true}) name!: string;
+    @Prop({ required: true }) name!: string;
 
     weather = [] as WeatherData[]
 
@@ -24,7 +24,7 @@ export default class CityCard extends Vue {
 <template>
     <div class="city-card">
         <a class="name" v-text="name" v-bind:href="'/city/' + name"/>
-        <CityWeather v-for="v in weather" :key="v" :weather="v" />
+        <CityWeather v-for="v in weather" :key="v" :weather="v"/>
     </div>
 </template>
 

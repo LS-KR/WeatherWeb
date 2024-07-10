@@ -29,7 +29,14 @@ export async function analyseHour3Data(data: string[]): Promise<WeatherData[]> {
     const weathers = [] as WeatherData[]
     for (const d of data) {
         const s = d.split(',')
-        const weather = {type: 'sun', wind: {direction: 'N', strength: 0}, temperature: NaN, day: NaN, hour: NaN, precipitation: NaN} as WeatherData
+        const weather = {
+            type: 'sun',
+            wind: { direction: 'N', strength: 0 },
+            temperature: NaN,
+            day: NaN,
+            hour: NaN,
+            precipitation: NaN
+        } as WeatherData
         for (const v of translateWeather) {
             if (s[2].includes(v[0])) {
                 weather.type = v[1]

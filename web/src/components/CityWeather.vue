@@ -2,12 +2,12 @@
 import WeatherIcon from "@/components/WeatherIcon.vue";
 import WindIcon from "@/components/WindIcon.vue";
 import {WeatherData} from "@/logic/data";
-import {Vue, Component, Prop} from 'vue-facing-decorator';
 import {Icon} from '@iconify/vue'
+import {Component, Prop, Vue} from 'vue-facing-decorator';
 
-@Component({components: { WindIcon, WeatherIcon, Icon}})
+@Component({ components: { WindIcon, WeatherIcon, Icon } })
 export default class CityWeather extends Vue {
-    @Prop({required: true}) weather: WeatherData;
+    @Prop({ required: true }) weather: WeatherData;
 }
 </script>
 
@@ -15,9 +15,9 @@ export default class CityWeather extends Vue {
     <div class="city-weather">
         <p class="time" v-text="weather.day + '/' + weather.hour + ':00'"/>
         <div class="weatherData">
-            <WeatherIcon :type="weather.type" />
-            <p class="temp" v-text="weather.temperature + '°C'" />
-            <WindIcon :wind="weather.wind" />
+            <WeatherIcon :type="weather.type"/>
+            <p class="temp" v-text="weather.temperature + '°C'"/>
+            <WindIcon :wind="weather.wind"/>
         </div>
     </div>
 </template>

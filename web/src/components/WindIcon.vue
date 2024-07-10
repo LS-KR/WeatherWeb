@@ -1,26 +1,26 @@
 <script lang="ts">
 import {Wind} from "@/logic/data";
-import {Vue, Component, Prop} from 'vue-facing-decorator';
 import {Icon} from '@iconify/vue'
+import {Component, Prop, Vue} from 'vue-facing-decorator';
 
-@Component({components: {Icon}})
+@Component({ components: { Icon } })
 export default class WindIcon extends Vue {
-    @Prop({required: true}) wind: Wind;
+    @Prop({ required: true }) wind: Wind;
 }
 </script>
 
 <template>
-<div class="wind-icon">
-    <Icon class="icon" icon="ph:arrow-down" v-if="wind.direction == 'N'" />
-    <Icon class="icon" icon="ph:arrow-down-left" v-if="wind.direction == 'NE'" />
-    <Icon class="icon" icon="ph:arrow-left" v-if="wind.direction == 'E'" />
-    <Icon class="icon" icon="ph:arrow-up-left" v-if="wind.direction == 'SE'" />
-    <Icon class="icon" icon="ph:arrow-up" v-if="wind.direction == 'S'" />
-    <Icon class="icon" icon="ph:arrow-up-right" v-if="wind.direction == 'SW'" />
-    <Icon class="icon" icon="ph:arrow-right" v-if="wind.direction == 'W'" />
-    <Icon class="icon" icon="ph:arrow-down-right" v-if="wind.direction == 'NW'" />
-    <p class="strength" v-text="wind.strength + 'ss'"></p>
-</div>
+    <div class="wind-icon">
+        <Icon class="icon" icon="ph:arrow-down" v-if="wind.direction == 'N'"/>
+        <Icon class="icon" icon="ph:arrow-down-left" v-if="wind.direction == 'NE'"/>
+        <Icon class="icon" icon="ph:arrow-left" v-if="wind.direction == 'E'"/>
+        <Icon class="icon" icon="ph:arrow-up-left" v-if="wind.direction == 'SE'"/>
+        <Icon class="icon" icon="ph:arrow-up" v-if="wind.direction == 'S'"/>
+        <Icon class="icon" icon="ph:arrow-up-right" v-if="wind.direction == 'SW'"/>
+        <Icon class="icon" icon="ph:arrow-right" v-if="wind.direction == 'W'"/>
+        <Icon class="icon" icon="ph:arrow-down-right" v-if="wind.direction == 'NW'"/>
+        <p class="strength" v-text="wind.strength + 'ss'"></p>
+    </div>
 </template>
 
 <style lang="scss">
