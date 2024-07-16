@@ -62,5 +62,19 @@ export async function analyseHour3Data(data: string[]): Promise<WeatherData[]> {
         weather.precipitation = parseFloat(s[6])
         weathers.push(weather)
     }
-    return weathers;
+    weathers.sort((a, b) => {
+        const now = new Date();
+        const da = new Date(now.getFullYear(), now.getMonth(), a.day, a.hour, 0, 0);
+        const db = new Date(now.getFullYear(), now.getMonth(), b.day, b.hour, 0, 0);
+        return da.getTime() - db.getTime();
+    })
+    return uniqBy(weathers, JSON.stringify);
+}
+
+function uniqBy(a: Array<any>, key: any) {
+    let seen = new Set();
+    return a.filter(item => {
+        let k = key(item);
+        return seen.has(k) ? false : seen.add(k);
+    });
 }
