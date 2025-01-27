@@ -22,9 +22,11 @@ export default class Home extends Vue {
             fetch(urlJoin(backendurl, 'search', this.model))
                 .then(it => it.json())
                 .then(it => {
-                    this.cities = []
-                    for (const city of (it as Code[])) {
-                        this.cities.push(city.city)
+                    if (it.length > 0) {
+                        this.cities = []
+                        for (const city of (it as Code[])) {
+                            this.cities.push(city.city)
+                        }
                     }
                 })
         } else {

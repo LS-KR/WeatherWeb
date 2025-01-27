@@ -6,6 +6,8 @@ export function getResponseSync(url: string): string {
 }
 
 export function shuffle(array: Array<any>): any[] {
+    if (!array) return [];
+    if (array.length < 1) return [];
     let currentIndex = array.length
     const arr = array.slice()
 
